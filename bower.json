@@ -4,7 +4,7 @@
   "main": ["./dist/simple-color-picker.js", "./dist/style.css"],
   "description": "Simple angular color picker using bootstrap dropdown",
   "homepage": "",
-  "private": true,
+  "private": false,
   "authors": [
     "James Hicklin"
   ],
@@ -13,7 +13,7 @@
     "url": "git://github.com/hicklin-james/ng-simple-color-picker.git"
   },
   "keywords": [
-    "angular"
+    "angular", "colorpicker", "simple"
   ],
   "license": "MIT",
   "dependencies": {
