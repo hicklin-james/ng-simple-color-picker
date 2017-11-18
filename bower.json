@@ -16,7 +16,7 @@
     "angular"
   ],
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "angular": ">1.4.0",
     "angular-bootstrap": "~2.5.0"
   },
