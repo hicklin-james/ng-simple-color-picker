@@ -2,6 +2,8 @@
 
 Sometimes you don't need or want a full colorpicker in your web application. This directive creates a simple bootstrap that allows you to select from a pre-defined list of colors.
 
+![alt text](https://github.com/hicklin-james/ng-simple-color-picker/screenshots/img1.png "Screenshot")
+
 ### Dependencies
 
 1. Bootstrap css (tested with 3.3.7)
