@@ -1,3 +1,3 @@
 'use strict';
 
-app = angular.module('ngSimpleColorPicker', []);
+angular.module('ngSimpleColorPicker', []);
