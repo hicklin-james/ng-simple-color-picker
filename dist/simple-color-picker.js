@@ -4,26 +4,26 @@
 (function(){
 'use strict';
 
-angular.module('ngSimpleColorPicker', []);
+angular.module('ngSimpleColorPicker', ['ui.bootstrap']);
 
 angular.module('ngSimpleColorPicker').factory('SimpleColorPickerService', [function() {
   var SimpleColorPickerService = {};
 
-  var hexRegex = /^#(?:[A-Fa-f0-9]{3}){1,2}$/
-  var rgbRegex = /^rgb[(](?:\s*0*(?:\d\d?(?:\.\d+)?(?:\s*%)?|\.\d+\s*%|100(?:\.0*)?\s*%|(?:1\d\d|2[0-4]\d|25[0-5])(?:\.\d+)?)\s*(?:,(?![)])|(?=[)]))){3}[)]$/
-  var hslRegex = /^hsl[(]\s*0*(?:[12]?\d{1,2}|3(?:[0-5]\d|60))\s*(?:\s*,\s*0*(?:\d\d?(?:\.\d+)?\s*%|\.\d+\s*%|100(?:\.0*)?\s*%)){2}\s*[)]$/
+  var hexRegex = /^#(?:[A-Fa-f0-9]{3}){1,2}$/;
+  var rgbRegex = /^rgb[(](?:\s*0*(?:\d\d?(?:\.\d+)?(?:\s*%)?|\.\d+\s*%|100(?:\.0*)?\s*%|(?:1\d\d|2[0-4]\d|25[0-5])(?:\.\d+)?)\s*(?:,(?![)])|(?=[)]))){3}[)]$/;
+  var hslRegex = /^hsl[(]\s*0*(?:[12]?\d{1,2}|3(?:[0-5]\d|60))\s*(?:\s*,\s*0*(?:\d\d?(?:\.\d+)?\s*%|\.\d+\s*%|100(?:\.0*)?\s*%)){2}\s*[)]$/;
 
   var checkColorType = function(color) {
     if (hexRegex.test(color)) {
-      return "hex";
+      return 'hex';
     } else if (rgbRegex.test(color)) {
-      return "rgb";
+      return 'rgb';
     } else if (hslRegex.test(color)) {
-      return "hsl";
+      return 'hsl';
     } else {
       return null;
     }
-  }
+  };
 
   // Converting from Hex to RGB
   var convertHexToRgb = function(hexColor) {
@@ -40,7 +40,7 @@ angular.module('ngSimpleColorPicker').factory('SimpleColorPickerService', [funct
       b: parseInt(result[3], 16)
     };
 
-    return "rgb(" + String(rgb.r) + "," + String(rgb.g) + "," + String(rgb.b) + ")"
+    return 'rgb(' + String(rgb.r) + ',' + String(rgb.g) + ',' + String(rgb.b) + ')';
   };
 
   // Converting from Hex to HSL
@@ -48,18 +48,18 @@ angular.module('ngSimpleColorPicker').factory('SimpleColorPickerService', [funct
     var rgb = convertHexToRgb(hexColor);
     var hsl = convertRgbToHsl(rgb);
     return hsl;
-  }
+  };
 
   // Converting from RGB to Hex
   var componentToHex = function(c) {
     var hex = c.toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
+    return hex.length === 1 ? '0' + hex : hex;
   };
 
   var convertRgbToHex = function(rgbColor) {
-    var a = rgbColor.split("(")[1].split(")")[0];
-    a = a = a.split(",");
-    return "#" + componentToHex(parseInt(a[0])) + componentToHex(parseInt(a[1])) + componentToHex(parseInt(a[2]));
+    var a = rgbColor.split('(')[1].split(')')[0];
+    a = a = a.split(',');
+    return '#' + componentToHex(parseInt(a[0])) + componentToHex(parseInt(a[1])) + componentToHex(parseInt(a[2]));
   };
 
   // Converting from RGB to HSL
@@ -69,7 +69,7 @@ angular.module('ngSimpleColorPicker').factory('SimpleColorPickerService', [funct
     var max = Math.max(r, g, b), min = Math.min(r, g, b);
     var h, s, l = (max + min) / 2;
 
-    if (max == min) {
+    if (max === min) {
       h = s = 0; // achromatic
     } else {
       var d = max - min;
@@ -84,20 +84,20 @@ angular.module('ngSimpleColorPicker').factory('SimpleColorPickerService', [funct
       h /= 6;
     }
 
-    return "hsl(" + String(parseInt(h * 360)) + "," + String(parseInt(s * 100)) + "%," + String(parseInt(l * 100)) + "%)";
-  }
+    return 'hsl(' + String(parseInt(h * 360)) + ',' + String(parseInt(s * 100)) + '%,' + String(parseInt(l * 100)) + '%)';
+  };
 
   var convertRgbToHsl = function(rgbColor) {
-    var a = rgbColor.split("(")[1].split(")")[0];
-    a = a = a.split(",");
+    var a = rgbColor.split('(')[1].split(')')[0];
+    a = a = a.split(',');
     return convertRgbToHslHelper(parseInt(a[0]), parseInt(a[1]), parseInt(a[2]));
-  }
+  };
 
   // Converting from HSL to RGB
   var convertHslToRgbHelper = function(h, s, l) {
     var r, g, b;
 
-    if (s == 0) {
+    if (s === 0) {
       r = g = b = l; // achromatic
     } else {
       function hue2rgb(p, q, t) {
@@ -116,33 +116,33 @@ angular.module('ngSimpleColorPicker').factory('SimpleColorPickerService', [funct
       g = hue2rgb(p, q, h);
       b = hue2rgb(p, q, h - 1/3);
     }
-    return "rgb(" + String(parseInt(r * 255)) + "," + String(parseInt(g * 255)) + "," + String(parseInt(b * 255)) + ")";
-  }
+    return 'rgb(' + String(parseInt(r * 255)) + ',' + String(parseInt(g * 255)) + ',' + String(parseInt(b * 255)) + ')';
+  };
 
   var convertHslToRgb = function(hslColor) {
-    var a = hslColor.split("(")[1].split(")")[0];
-    a = a.split(",");
+    var a = hslColor.split('(')[1].split(')')[0];
+    a = a.split(',');
     return convertHslToRgbHelper(parseFloat(a[0]/360), parseFloat(a[1])/100, parseFloat(a[2])/100);
-  }
+  };
 
   // Converting from HSL to Hex
   var convertHslToHex = function(hslColor) {
     var rgbColor = convertHslToRgb(hslColor);
     var hexColor = convertRgbToHex(rgbColor);
     return hexColor
-  }
+  };
 
   var convertColorsToHex = function(colors) {
     return colors.map(function(c) {
       var colorFormat = checkColorType(c);
       switch (colorFormat) {
-        case "hex":
+        case 'hex':
           return c;
         break;
-        case "rgb":
+        case 'rgb':
           return convertRgbToHex(c);
           break;
-        case "hsl":
+        case 'hsl':
           return convertHslToHex(c);
           break;
         default:
@@ -156,13 +156,13 @@ angular.module('ngSimpleColorPicker').factory('SimpleColorPickerService', [funct
     return colors.map(function(c) {
       var colorFormat = checkColorType(c);
       switch (colorFormat) {
-        case "hex":
+        case 'hex':
           return convertHexToRgb(c);
         break;
-        case "rgb":
+        case 'rgb':
           return c;
           break;
-        case "hsl":
+        case 'hsl':
           return convertHslToRgb(c);
           break;
         default:
@@ -176,13 +176,13 @@ angular.module('ngSimpleColorPicker').factory('SimpleColorPickerService', [funct
     return colors.map(function(c) {
       var colorFormat = checkColorType(c);
       switch (colorFormat) {
-        case "hex":
+        case 'hex':
           return convertHexToHsl(c);
         break;
-        case "rgb":
+        case 'rgb':
           return convertRgbToHsl(c);
           break;
-        case "hsl":
+        case 'hsl':
           return c;
           break;
         default:
@@ -194,13 +194,13 @@ angular.module('ngSimpleColorPicker').factory('SimpleColorPickerService', [funct
 
   SimpleColorPickerService.convertColors = function(colors, toFormat) {
     switch (toFormat) {
-      case "hex":
+      case 'hex':
         return convertColorsToHex(colors);
         break;
-      case "rgb":
+      case 'rgb':
         return convertColorsToRgb(colors);
         break;
-      case "hsl":
+      case 'hsl':
         return convertColorsToHsl(colors);
         break;
       default:
@@ -210,7 +210,7 @@ angular.module('ngSimpleColorPicker').factory('SimpleColorPickerService', [funct
   };
 
   return SimpleColorPickerService;
-}])
+}]);
 
 angular.module('ngSimpleColorPicker').directive('simpleColorPicker', [function () {
   
