@@ -1,0 +1,32 @@
+{
+  "name": "ng-simple-color-picker",
+  "version": "0.0.1",
+  "main": "./dist/simple-color-picker.js",
+  "description": "Simple angular color picker using bootstrap dropdown",
+  "homepage": "",
+  "private": true,
+  "authors": [
+    "James Hicklin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hicklin-james/ng-simple-color-picker.git"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "angular": ">1.4.0",
+    "angular-bootstrap": "~2.5.0"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "build.conf.js",
+    "gulpfile.js",
+    "karma.conf.js",
+    "package.json"
+  ]
+}
