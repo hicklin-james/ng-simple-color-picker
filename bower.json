@@ -2,7 +2,7 @@
   "name": "ng-simple-color-picker",
   "version": "0.0.1",
   "main": ["./dist/simple-color-picker.js", "./dist/style.css"],
-  "description": "Simple angular color picker using a bootstrap dropdown",
+  "description": "Simple angular color picker using bootstrap dropdown",
   "homepage": "",
   "private": false,
   "authors": [
