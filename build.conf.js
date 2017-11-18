@@ -4,6 +4,7 @@
 module.exports = {
 
   srcJs: ['src/**/*.module.js', 'src/**/*.js', '!src/**/*_test.js'],
+  srcCss: ['src/**/*.css'],
   tests: 'src/**/*_test.js',
   buildFolder: 'dist',
   buildJsFilename: 'simple-color-picker.js',

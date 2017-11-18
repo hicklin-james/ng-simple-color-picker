@@ -6,7 +6,8 @@ var path = require('path'),
   karma = require('karma').server,
   karmaConfig = require('./karma.conf'),
   config = require('./build.conf.js'),
-  plugins = require('gulp-load-plugins')();
+  plugins = require('gulp-load-plugins')(),
+  clean = require('gulp-clean-css');
 
 var ciMode = false;
 
@@ -18,8 +19,7 @@ gulp.task('clean', function () {
 
 gulp.task('scripts', function () {
 
-  return gulp.src(config.srcJs)
-
+  gulp.src(config.srcJs)
     // jshint
     .pipe(plugins.jshint())
     .pipe(plugins.jshint.reporter('jshint-stylish'))
@@ -39,6 +39,10 @@ gulp.task('scripts', function () {
     .pipe(gulp.dest(config.buildFolder))
     .pipe(plugins.filesize())
     .on('error', plugins.util.log);
+
+  return gulp.src(config.srcCss)
+    .pipe(clean({compatibility: 'ie8'}))
+    .pipe(gulp.dest('dist'));
 
 });
 
