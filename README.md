@@ -7,7 +7,7 @@ Sometimes you don't need or want a full colorpicker in your AngularJS applicatio
 ### Dependencies
 
 1. Bootstrap css (tested with 3.3.7) - **not included in bower** - use the CDN or alternative
-2. Angular bootstrap (tested with 2.5.0)
+2. Angular bootstrap ui (tested with 2.5.0)
 3. Angular (tested with 1.4.0)
 
 No guarantees that this directive will work on other (especially older) versions of the dependencies. Note that **jQuery is not required**.
