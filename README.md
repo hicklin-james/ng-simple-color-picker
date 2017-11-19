@@ -1,13 +1,13 @@
 # ng-simple-color-picker
 
-Sometimes you don't need or want a full colorpicker in your web application. This directive creates a simple bootstrap dropdown that allows you to select from a pre-defined list of colors.
+Sometimes you don't need or want a full colorpicker in your AngularJS application. This directive creates a simple bootstrap dropdown that allows you to select from a pre-defined list of colors.
 
 ![alt text](https://github.com/hicklin-james/ng-simple-color-picker/blob/master/screenshots/img1.png "Screenshot")
 
 ### Dependencies
 
-1. Bootstrap css (tested with 3.3.7)
-2. Angular bootstrap (tested with 2.5.0)
+1. Bootstrap css (tested with 3.3.7) - **not included in bower** - use the CDN or alternative
+2. Angular bootstrap ui (tested with 2.5.0)
 3. Angular (tested with 1.4.0)
 
 No guarantees that this directive will work on other (especially older) versions of the dependencies. Note that **jQuery is not required**.
@@ -24,7 +24,7 @@ If you don't use bower, you can clone the repository and include the JS and CSS 
 
 ---
 
-Once you have included the files (either through bower or manually), you need to add the `ngSimpleColderPicker` module to your angular app. You are now ready to use the directive.
+Once you have included the files (either through bower or manually), you need to add the `ngSimpleColorPicker` module to your angular app. You are now ready to use the directive.
 
 ### Using the directive
 
