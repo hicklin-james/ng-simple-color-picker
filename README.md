@@ -6,7 +6,7 @@ Sometimes you don't need or want a full colorpicker in your web application. Thi
 
 ### Dependencies
 
-1. Bootstrap css (tested with 3.3.7)
+1. Bootstrap css (tested with 3.3.7) - **not included in bower** - use the CDN or alternative
 2. Angular bootstrap (tested with 2.5.0)
 3. Angular (tested with 1.4.0)
 
