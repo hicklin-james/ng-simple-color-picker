@@ -204,7 +204,7 @@ angular.module('ngSimpleColorPicker').factory('SimpleColorPickerService', [funct
         return convertColorsToHsl(colors);
         break;
       default:
-
+        return colors
         break;
     }
   };
@@ -217,16 +217,12 @@ angular.module('ngSimpleColorPicker').directive('simpleColorPicker', [function (
   var SimpleColorPickerCtrl = function($scope, SimpleColorPickerService) {
     var defaultHexColors = ['#7cb5ec', '#434348', '#90ed7d', '#f7a35c', '#8085e9', 
       '#f15c80', '#e4d354', '#2b908f', '#f45b5b', '#91e8e1', '#bfacc8', '#cfd186'];
-    //var defaultHexColors = ["rgb(123,123,123)"]
+
     $scope.colorFormat = angular.isDefined($scope.colorFormat) ? $scope.colorFormat : "hex";
     $scope.selectableColors = angular.isDefined($scope.selectableColors) ? $scope.selectableColors : defaultHexColors;
     $scope.colorPickerAppendToBody = angular.isDefined($scope.colorPickerAppendToBody) ? $scope.colorPickerAppendToBody : false;
-    //if (!attrs.colorFormat) { attrs.colorFormat = "hex"; }
-    //if (!attrs.selectableColors) { attrs.selectableColors = defaultHexColors; } 
 
     $scope.items = SimpleColorPickerService.convertColors($scope.selectableColors, $scope.colorFormat)
-
-    console.log($scope.items);
 
     $scope.changedColor = function(nc) {
       $scope.color = nc
