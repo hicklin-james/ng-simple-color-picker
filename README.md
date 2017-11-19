@@ -24,7 +24,7 @@ If you don't use bower, you can clone the repository and include the JS and CSS 
 
 ---
 
-Once you have included the files (either through bower or manually), you need to add the `ngSimpleColderPicker` module to your angular app. You are now ready to use the directive.
+Once you have included the files (either through bower or manually), you need to add the `ngSimpleColorPicker` module to your angular app. You are now ready to use the directive.
 
 ### Using the directive
 
